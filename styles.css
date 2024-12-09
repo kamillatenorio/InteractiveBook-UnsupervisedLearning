@@ -1,0 +1,373 @@
+/* General Styles */
+body {
+    background-color: #e4e39e;
+    font-family: 'Fira Sans', serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    font-family: 'Fira Sans', serif;
+}
+
+/* Book Container */
+#book-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    width: 100%; /* Ensure the container takes full width */
+    position: relative;
+}
+
+.book {
+    width: 90%; /* Adjust to fit screen width */
+    max-width: 1200px; /* Maximum width */
+    height: 950px; /* Height of the book */
+    position: relative;
+    display: flex;
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+    background-color: #fdfdfd;
+    transform-style: preserve-3d;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.page-pair {
+    display: flex;
+    width: 100%;
+    height: 100%; /* Make sure it takes the full height of the book */
+    border-radius: 10px;
+    display: none; /* Hide all pairs initially */
+}
+
+.page-single {
+    display: flex;
+    width: 100%;
+    height: 100%; /* Full height of the book */
+    border-radius: 10px;
+    display: none; /* Hide all single pages initially */
+    padding-bottom: 40px;
+}
+
+.page {
+    width: 50%;
+    padding: 20px; /* Adjust padding */
+    box-sizing: border-box;
+    background-color: #fffefb;
+    box-shadow: inset 10px 0 20px rgba(0, 0, 0, 0.1);
+    overflow-y: auto; /* Enable scrolling if content overflows */
+    display: flex; /* Use Flexbox for centering */
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    padding-bottom: 40px; 
+}
+
+.left-page {
+    border-right: 1px solid #ccc;
+    color: #000;
+    font-family: "Fira Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+.right-page {
+    color: #000;
+    font-family: "Fira Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    text-align: left;
+}
+
+.page.right-page p,
+.page.right-page ul {
+    margin: 0;
+    padding-left: 0;
+}
+
+.page.right-page ul li {
+    list-style-position: inside; /* Optional, to keep bullet points aligned with text */
+}
+
+
+.full-page {
+    width: 100%; /* Full width for single pages */
+    background-color: #fffefb;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    font-family: "Fira Sans";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+.citation {
+    padding-left: 20px;
+    color: #000;
+    font-family: "Fira Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+}
+
+.gif {
+    width: 70%;
+    display: block;
+    margin: 0 auto;
+    border-radius: 95%;
+}
+
+.activity {
+    padding-left: 20px;
+    color: #000000;
+    font-family: "Fira Sans";
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 200;
+    line-height: normal;
+}
+
+/* Center the chapter-title in the left page */
+.chapter-title {
+    font-size: 2em; /* Adjust size as needed */
+    margin: 0; /* Remove default margin */
+    text-align: left; /* Center text alignment */
+    color: #000;
+    font-family: "Fira Sans";
+    font-size: 52px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    width: 100%; /* Ensure the title spans the full width */
+}
+
+.character-image {
+    width: 100%; /* Make image take up full width */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 100%; /* Ensure the image doesn't overflow */
+    margin-bottom: 5px; /* Add a very small margin to ensure it's close but not touching the bottom */
+    padding: 0; /* Remove any padding */
+    object-fit: contain; /* Ensure the image fits well within its container */
+}
+
+.corner-image {
+    bottom: 0; /* Position at the bottom */
+    left: 0; /* Position at the left */
+    max-width: 100%;
+    width: 200px;
+    height: 200px;
+    object-fit: contain; 
+  }
+
+/* Responsive Images */
+.image {
+    width: 90%; /* Make image take up full width */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 100%; /* Ensure the image doesn't overflow */
+    padding: 5px;
+    border-radius: 20px;
+}
+
+/* Responsive Iframe */
+iframe {
+    width: 100%; /* Make iframe take up full width */
+    height: auto;
+    aspect-ratio: 16/9; /* Maintain a 16:9 aspect ratio */
+    border: none;
+}
+
+/* Navigation Buttons */
+.navigation {
+    margin-top: 20px;
+}
+
+.navigation button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin: 0 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.navigation button:hover {
+    background-color: #555;
+}
+
+/* Style for the page numbers */
+.page-number {
+    position: absolute;
+    bottom: 10px;
+    font-size: 14px;
+    color: #666;
+    font-family: 'Fira Sans', serif;
+}
+
+.page-number.left {
+    left: 20px; /* Bottom left for left pages */
+}
+
+.page-number.right {
+    right: 20px; /* Bottom right for right pages */
+}
+
+.page-number.hide {
+    display: none;
+}
+
+/* Progress Bar Container */
+#progress-bar-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%; /* Match the width of the book */
+    max-width: 1200px; /* Match the book's max width */
+    margin: 30px 0 10px 0; /* Add sufficient margin at the top */
+    position: relative;
+    z-index: 10;
+}
+
+#progress-bar {
+    width: 100%; /* Make progress bar take full width of the container */
+    height: 30px; /* Increased height of the progress bar */
+    background-color: #ddd; /* Background color of the progress bar */
+    border-radius: 15px; /* Adjusted rounded edges */
+    overflow: hidden; /* Ensure the fill does not overflow */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add a slight shadow for depth */
+    position: relative; /* Enable absolute positioning for the lamp */
+}
+
+#progress-fill {
+    width: 0%; /* Start at 0% */
+    height: 100%; /* Fill the entire height */
+    background: linear-gradient(90deg, #4CAF50, #1E90FF); /* Gradient color */
+    transition: width 0.4s ease; /* Smooth transition for the progress */
+    border-radius: 15px; /* Adjusted rounded edges */
+    position: relative;
+}
+
+#lamp-icon {
+    position: absolute;
+    top: 0px; /* Adjust the position to ensure the lamp icon is fully visible */
+    left: 0; /* Start position of the lamp */
+    width: 30px; /* Adjust the size of the lamp icon */
+    height: 30px; /* Ensure it's proportionate */
+    transition: left 0.4s ease; /* Move smoothly with the progress */
+    pointer-events: none; /* Ensure the icon does not interfere with clicking */
+    z-index: 5; /* Ensure the lamp is above the progress bar */
+}
+
+/* Responsive Design - Mobile */
+@media (max-width: 768px) {
+    .book {
+        width: 100%; /* Make book take full width on smaller screens */
+        max-width: 100%; /* No max width limit */
+        height: auto; /* Allow flexible height */
+    }
+
+    .page-pair {
+        flex-direction: column; /* Stack pages vertically */
+        height: auto; /* Allow flexible height */
+    }
+
+    .page {
+        width: 100%; /* Make pages full width */
+        padding: 10px; /* Adjust padding */
+        box-shadow: none; /* Remove shadows */
+        justify-content: flex-start; /* Align content at the top for mobile */
+    }
+
+    .left-page {
+        border-right: none; /* Remove border on smaller screens */
+        border-bottom: 1px solid #ccc; /* Add a bottom border */
+    }
+
+    .right-page {
+        padding-left: 10px;
+    }
+
+    /* Adjust heading and paragraph sizes for mobile */
+    h1, h2 {
+        font-size: 1.5em; /* Reduced size */
+    }
+
+    .chapter-title {
+        font-size: 1.8em; /* Adjust chapter title size for mobile */
+        text-align: left; /* Align title to the left for readability */
+    }
+
+    p {
+        font-size: 0.9em; /* Reduced paragraph size */
+    }
+
+    /* Adjust embedded content for smaller screens */
+    iframe {
+        height: calc(100vh - 50px); /* Subtract a bit of padding/margin to ensure it fits */
+    }
+
+    .character-image {
+        width: 100%;
+        max-width: 100%; /* Ensure image fits within container */
+    }
+
+    .corner-image{
+        width: 100%;
+        max-width: 100%; /* Ensure image fits within container */
+    }
+
+    .navigation button {
+        padding: 8px 12px; /* Adjust button size */
+        font-size: 14px; /* Adjust font size */
+        margin: 5px; /* Adjust spacing */
+    }
+
+    .page-number {
+        display: none;
+    }
+
+}
+
+/* Responsive Design - Tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .book {
+        width: 95%; /* Use most of the screen */
+        max-width: 1000px; /* Maximum width */
+        height: 700px; /* Adjusted height */
+    }
+
+    .page-pair {
+        height: 100%; /* Make sure it takes the full height of the book */
+    }
+
+    .page {
+        padding: 20px;
+        justify-content: center; /* Center content vertically */
+    }
+
+    .navigation button {
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    iframe {
+        height: 100%; /* Make iframe take full height of the container */
+    }
+}
