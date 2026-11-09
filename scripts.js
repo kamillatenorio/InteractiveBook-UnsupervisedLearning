@@ -1,74 +1,10 @@
 window.onload = function() {
-    // Select all page pairs and single pages in their order of appearance
-    const allPages = document.querySelectorAll('.page-pair, .page-single');
+    // Select all page pairs in their order of appearance
+    const allPages = document.querySelectorAll('.page-pair');
     let currentPageIndex = 0; // Start at the first page
     const isSmallScreen = window.innerWidth <= 768; // Detect if screen size is small
 
-    // Array of questions for the quiz
-    const quizQuestions = [
-        {
-            question: "Glauben Sie, dass ChatGPT den Turing-Test bestanden hat?",
-            options: ["Wahr", "Falsch"],
-            answer: "A"
-        },
-        {
-            question: "What does 'AI' stand for?",
-            options: ["Artificial Interface", "Automated Integration", "Artificial Intelligence", "Autonomous Interaction"],
-            answer: "C"
-        }
-    ];
-    
-    let currentQuizQuestionIndex = 0;
-
-    // Function to load a quiz question
-    function loadQuizQuestion() {
-        const quizQuestion = quizQuestions[currentQuizQuestionIndex];
-        document.getElementById("question").innerText = quizQuestion.question;
-        document.getElementById("label1").innerText = quizQuestion.options[0];
-        document.getElementById("label2").innerText = quizQuestion.options[1];
-        if (quizQuestion.options.length > 2) {
-            document.getElementById("label3").innerText = quizQuestion.options[2];
-            document.getElementById("label4").innerText = quizQuestion.options[3];
-        }
-        
-        // Clear any previously selected option and enable inputs
-        document.querySelectorAll('input[name="option"]').forEach(option => {
-            option.checked = false;
-            option.disabled = false;
-        });
-        
-        // Clear previous result message
-        document.getElementById("result").innerText = "";
-        
-        // Enable the submit button
-        document.querySelector('button[onclick="checkQuizAnswer()"]').disabled = false;
-    }
-
-    // Function to check the selected answer for the quiz
-    window.checkQuizAnswer = function() {
-        const selectedOption = document.querySelector('input[name="option"]:checked');
-        
-        if (!selectedOption) {
-            alert("Bitte wählen Sie eine Option aus!");
-            return;
-        }
-        
-        const answer = selectedOption.value;
-        const resultElement = document.getElementById("result");
-
-        if (answer === quizQuestions[currentQuizQuestionIndex].answer) {
-            resultElement.innerText = "Richtig! Gehen Sie zur nächsten Seite, um mehr zu erfahren ...";
-            resultElement.style.color = "green"; 
-        } else {
-            resultElement.innerText = "Das stimmt so nicht! Laut aktuellen Forschungsergebnissen hat ChatGPT den Turing-Test bestanden! Gehen Sie zur nächsten Seite, um mehr zu erfahren...";
-            resultElement.style.color = "red";
-        }
-        // Disable further attempts
-        document.querySelectorAll('input[name="option"]').forEach(option => option.disabled = true);
-        document.querySelector('button[onclick="checkQuizAnswer()"]').disabled = true;
-    }
-
-    // Function to show the current page (either pair or single)
+    // Function to show the current page
     function showPage(index) {
         // Hide all pages initially
         allPages.forEach((page, i) => {
@@ -81,11 +17,7 @@ window.onload = function() {
         // Control the visibility of 'Previous' and 'Next' buttons
         document.getElementById('prev-btn').style.display = index === 0 ? 'none' : 'inline-block';
         document.getElementById('next-btn').style.display = index === allPages.length - 1 ? 'none' : 'inline-block';
-        
-        // Check if the current page is the quiz page (with id 'pair29')
-        if (index === Array.from(allPages).findIndex(page => page.id === "pair29")) {
-            loadQuizQuestion(); // Load the quiz question
-        }
+
     }
 
     // Function to navigate to the previous page
@@ -114,7 +46,7 @@ window.onload = function() {
         lampIcon.style.left = `calc(${progressPercentage}% - 15px)`; // Adjust based on lamp size
     }
 
-    // Initialize by showing the first page (either pair or single)
+    // Initialize by showing the first page
     showPage(currentPageIndex);
 
     // Adding page numbers (except for page 1 and 2)
